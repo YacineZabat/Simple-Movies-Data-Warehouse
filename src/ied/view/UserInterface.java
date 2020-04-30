@@ -3,21 +3,23 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package app.view;
+package ied.view;
 
-import app.controller.WelcomeController;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.util.HashMap;
 
 
 /**
  *
  * @author zabat
  */
-public class Welcome extends javax.swing.JFrame {
+public class UserInterface extends javax.swing.JFrame {
 
     /**
      * Creates new form Welcome
      */
-    public Welcome() {
+    public UserInterface() {
         initComponents();
     }
 
@@ -48,7 +50,7 @@ public class Welcome extends javax.swing.JFrame {
         jLabel1.setText("requete :");
 
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Type de requete", "Recherche film par titre  ", "Recherche films par acteur " }));
-        jComboBox1.addActionListener(new WelcomeController(this));
+        jComboBox1.addActionListener(new UiListener(this));
 
 
         jTextField1.addActionListener(new java.awt.event.ActionListener() {
@@ -62,7 +64,7 @@ public class Welcome extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Title", "Date de sortie", "Genre", "Distributeur", "budget", "revenus mondiaux", "réalisateur"
+                "Title", "Date de sortie", "Genre", "Distributeur", "budget", "revenus mondiaux", "rï¿½alisateur"
             }
         ) {
             Class[] types = new Class [] {
@@ -82,12 +84,12 @@ public class Welcome extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(jTable1);
         
-        WelcomeController listener = new WelcomeController(this);
+        UiListener listener = new UiListener(this);
         jTable1.getSelectionModel().addListSelectionListener(listener);
         jTable1.getColumnModel().getSelectionModel().addListSelectionListener(listener);
 
         jButton1.setText("Execute");
-        jButton1.addActionListener(new WelcomeController(this));
+        jButton1.addActionListener(new UiListener(this));
 
 
         jTable2.setModel(new javax.swing.table.DefaultTableModel(
@@ -118,7 +120,7 @@ public class Welcome extends javax.swing.JFrame {
         jTextPane1.setEnabled(false);
         jScrollPane3.setViewportView(jTextPane1);
 
-        jLabel2.setText("Résumé du film ");
+        jLabel2.setText("Rï¿½sumï¿½ du film ");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -214,20 +216,20 @@ public class Welcome extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Welcome.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(UserInterface.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Welcome.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(UserInterface.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Welcome.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(UserInterface.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Welcome.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(UserInterface.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Welcome().setVisible(true);
+                new UserInterface().setVisible(true);
             }
         });
     }
@@ -262,6 +264,4 @@ public class Welcome extends javax.swing.JFrame {
     public javax.swing.JTable getjTable2() {
 		return jTable2;
 	}
-
-    
 }

@@ -1,4 +1,4 @@
-package app.controller;
+package ied.view;
 
 import java.awt.Component;
 import java.awt.Window;
@@ -15,13 +15,10 @@ import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 import javax.swing.table.DefaultTableModel;
 
-
-import app.view.Welcome;
-
-public class WelcomeController implements ActionListener, ListSelectionListener {
-	Welcome welcome; 
+public class UiListener implements ActionListener, ListSelectionListener {
+	UserInterface welcome; 
 	
-	public WelcomeController(Welcome w) {
+	public UiListener(UserInterface w) {
 		this.welcome = w;
 	}
 	
@@ -75,10 +72,10 @@ public class WelcomeController implements ActionListener, ListSelectionListener 
 		    dm.removeRow(i);
 		}
 	}
+	
 	private void insertRow(JTable table, String[] row) {
 	    DefaultTableModel t = (DefaultTableModel) table.getModel();
 	    Vector<String> v = new Vector<String>(Arrays.asList(row)) ; 
 	    t.insertRow(table.getRowCount(),  v);
 	}
-
 }

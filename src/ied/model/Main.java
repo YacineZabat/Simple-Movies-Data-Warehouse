@@ -1,9 +1,9 @@
-package linkedMovieDataBase;
+package ied.model;
 
 
 import java.util.List;
 
-import linkedMovieDataBase.LinkedMovieDataBase;
+import ied.model.LinkedMovieDataBase;
 
 public class Main {
     static public void main(String...argv) {

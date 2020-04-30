@@ -1,4 +1,4 @@
-package linkedMovieDataBase;
+package ied.model;
 
 import java.util.ArrayList;
 import java.util.List;
