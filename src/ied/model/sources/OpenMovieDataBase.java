@@ -1,4 +1,4 @@
-package ied.model;
+package ied.model.sources;
 
 import org.w3c.dom.Document;
 import javax.xml.parsers.DocumentBuilder;

@@ -1,11 +1,10 @@
 package ied.controller;
 
-import java.util.HashMap;
-import java.util.Map;
 
-import ied.model.OpenMovieDataBase;
-import ied.model.RelationalDataBase;
-import ied.view.UserInterface;
+import java.util.HashMap;
+
+import ied.model.sources.OpenMovieDataBase;
+import ied.model.sources.relationalDB.RelationalDataBase;
 
 public class Mediator
 {
@@ -29,3 +28,4 @@ public class Mediator
 		return movieData;
 	}
 }
+

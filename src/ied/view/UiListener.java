@@ -1,24 +1,19 @@
 package ied.view;
 
-import java.awt.Component;
-import java.awt.Window;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Arrays;
 import java.util.Vector;
 
-import javax.swing.table.TableColumn;
-import javax.swing.table.TableModel;
-import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 import javax.swing.table.DefaultTableModel;
 
 public class UiListener implements ActionListener, ListSelectionListener {
-	UserInterface welcome; 
+	DesktopInterface welcome; 
 	
-	public UiListener(UserInterface w) {
+	public UiListener(DesktopInterface w) {
 		this.welcome = w;
 	}
 	

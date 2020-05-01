@@ -1,4 +1,4 @@
-package ied.model;
+package ied.model.sources;
 
 import java.util.ArrayList;
 import java.util.List;
