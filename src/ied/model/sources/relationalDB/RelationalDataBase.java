@@ -6,24 +6,24 @@ import ied.model.business.Movie;
 
 
 public class RelationalDataBase {
-	Connection dbConnection; 
+	Connection dbConnection;
 	public RelationalDataBase() {
 		 this.dbConnection = JdbcConnection.getConnection();
 	}
-	public Movie getMovie(String title) {		
+	public Movie getMovie(String title) {
 		try {
-			title = inputSanitize(title); 
-			Movie movie = new Movie(); 
+			title = inputSanitize(title);
+			Movie movie = new Movie();
 			String query1 =String.format("select *"
-					+ " from movies where movies.Movie = '%s' ",title);
+								+ " from movies where lower(movies.Movie) like '%%%s%%' ",title);
 			String query2 =String.format("select * from  moviesbudget  where moviesbudget.Movie = '%s' ",title);
-			
+
 			ResultSet rs;
-			Statement stmt = this.dbConnection.createStatement(); 
+			Statement stmt = this.dbConnection.createStatement();
             rs = stmt.executeQuery(query1);
             if ( rs.next() ) {
                 movie.setGenre(rs.getString("Genre"));
-                movie.setDistributor(rs.getString("Distributor"));   
+                movie.setDistributor(rs.getString("Distributor"));
             }
             rs = stmt.executeQuery(query2);
             if ( rs.next() ) {
@@ -32,18 +32,18 @@ public class RelationalDataBase {
                 movie.setWorldwideGross(rs.getString("Worldwide Gross"));
                 movie.setDomesticGross(rs.getString("Domestic Gross"));
             }
-            movie.setTitle(title); 	
-			return movie; 
-		} 
+            movie.setTitle(title);
+			return movie;
+		}
 		catch (SQLException e) {
 			e.printStackTrace();
 		}
-		return null; 
+		return null;
 	}
-	
+
 	private String inputSanitize(String input) {
-		input = input.replace("''", "").replace("'", "''").trim(); 
-		return input; 
+		input = input.replace("''", "").replace("'", "''").trim();
+		return input;
 	}
 
 }
