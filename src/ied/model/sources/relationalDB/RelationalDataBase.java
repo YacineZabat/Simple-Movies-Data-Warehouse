@@ -1,36 +1,38 @@
 package ied.model.sources.relationalDB;
 
 import java.sql.*;
-import java.sql.ResultSet;
-import java.sql.SQLException;
 
 import ied.model.business.Movie;
 
 
 public class RelationalDataBase {
-
-
+	Connection dbConnection; 
+	public RelationalDataBase() {
+		 this.dbConnection = JdbcConnection.getConnection();
+	}
 	public Movie getMovie(String title) {		
 		try {
-			
+			title = inputSanitize(title); 
 			Movie movie = new Movie(); 
-			String query =String.format("select * from movies where Movie = '%s'",title);
-			Connection dbConnection = JdbcConnection.getConnection();
-			Statement stmt = dbConnection.createStatement(); 
+			String query1 =String.format("select *"
+					+ " from movies where movies.Movie = '%s' ",title);
+			String query2 =String.format("select * from  moviesbudget  where moviesbudget.Movie = '%s' ",title);
+			
 			ResultSet rs;
-			 
-            rs = stmt.executeQuery(query);
+			Statement stmt = this.dbConnection.createStatement(); 
+            rs = stmt.executeQuery(query1);
             if ( rs.next() ) {
                 movie.setGenre(rs.getString("Genre"));
-                movie.setTitle(rs.getString("Movie"));
                 movie.setDistributor(rs.getString("Distributor"));   
-                
+            }
+            rs = stmt.executeQuery(query2);
+            if ( rs.next() ) {
                 movie.setReleaseDate(rs.getString("Release Date"));
                 movie.setProductionBudget(rs.getString("Production Budget"));
                 movie.setWorldwideGross(rs.getString("Worldwide Gross"));
                 movie.setDomesticGross(rs.getString("Domestic Gross"));
             }
-    		dbConnection.close();
+            movie.setTitle(title); 	
 			return movie; 
 		} 
 		catch (SQLException e) {
@@ -38,9 +40,10 @@ public class RelationalDataBase {
 		}
 		return null; 
 	}
-	public static void main(String[] args) {
-		RelationalDataBase rd = new RelationalDataBase(); 
-		rd.getMovie("Chicken Run"); 
+	
+	private String inputSanitize(String input) {
+		input = input.replace("''", "").replace("'", "''").trim(); 
+		return input; 
 	}
 
 }

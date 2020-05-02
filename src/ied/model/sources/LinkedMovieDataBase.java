@@ -1,6 +1,6 @@
 package ied.model.sources;
 
-import java.util.ArrayList;
+import java. util.ArrayList;
 import java.util.List;
 
 import org.apache.jena.query.*;
@@ -24,20 +24,24 @@ public class LinkedMovieDataBase {
     		"PREFIX p: <http://dbpedia.org/property/> "; 
 	
 	
-	public List<String> getActorsByTitle(String title) {
+	public List<String> searchActorsByTitle(String title) {
 		String req =   String.format("SELECT ?colname WHERE { ?film a dbo:Film ; foaf:name \"%s\"@en ; dbo:starring ?actor . ?actor foaf:name ?colname . }",title); 
 		return executeQuery(req); 
 	}
-	public List<String> getDirectorsByTitle(String title) {
+	public String searchDirectorByTitle(String title) {
 		String req = String.format("SELECT ?colname WHERE { ?film a dbo:Film ; foaf:name \"%s\"@en ; dbo:director ?director . ?director foaf:name ?colname . }",title);
-		return executeQuery(req); 
+		ArrayList<String> res = (ArrayList<String>) executeQuery(req); 
+		if(res.size() > 0)
+			return res.get(0); 
+		else
+			return ""; 
 	}
-	public List<String> getProducersByTitle(String title) {
+	public List<String> searchProducersByTitle(String title) {
 		String req =   String.format("SELECT ?colname WHERE { ?film a dbo:Film ; foaf:name \"%s\"@en ; dbo:producer ?producer . ?producer foaf:name ?colname . }",title); 
 		return executeQuery(req); 
 	}
 	
-	public List<String> getTitleByActor(String actor) {
+	public List<String> searchTitleByActor(String actor) {
 		String req =   String.format("SELECT ?colname WHERE { ?film a dbo:Film ; foaf:name ?colname ; dbo:starring ?actor. ?actor foaf:name \"%s\"@en . }",actor); 
 		return executeQuery(req); 
 	}
