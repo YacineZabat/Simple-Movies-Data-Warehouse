@@ -1,7 +1,9 @@
 package ied.model.sources;
 
 import java. util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
+import java.util.StringTokenizer;
 
 import org.apache.jena.query.*;
 import org.apache.jena.rdf.model.RDFNode;
@@ -70,9 +72,5 @@ public class LinkedMovieDataBase {
             e.printStackTrace();
             return null;  
         }
-        
-            
 	}
-	
-	
 }

@@ -48,7 +48,7 @@ public class DesktopInterface extends javax.swing.JFrame {
 
         jLabel1.setText("requete :");
 
-        jRequestType.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Type de requete", "Recherche film par titre  ", "Recherche films par acteur " }));
+        jRequestType.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Recherche film par titre  ", "Recherche films par acteur " }));
         jRequestType.setName("jRequestType"); // NOI18N
         jRequestType.addActionListener(listener);
 
@@ -59,7 +59,7 @@ public class DesktopInterface extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Title", "Date", "Genre", "Distributeur", "budget", "réalisateur", "revenus en USA", "revenus mondiaux"
+                "Title", "Date", "Genre", "Distributeur", "budget", "rÃ©alisateur", "revenus en USA", "revenus mondiaux"
             }
         ) {
             Class[] types = new Class [] {
@@ -289,7 +289,6 @@ public class DesktopInterface extends javax.swing.JFrame {
 		this.jUserInput.setText(jUserInput);
 	}
 
-    
     public javax.swing.JButton getjSearch() {
 		return jSearch;
 	}

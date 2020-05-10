@@ -14,8 +14,6 @@ import javax.swing.table.DefaultTableModel;
 import ied.controller.Mediator;
 import ied.model.business.Movie;
 
-
-
 public class DesktopInterfaceListener implements ActionListener, ListSelectionListener {
 	DesktopInterface welcome; 
 	ArrayList<Movie> movies; 
@@ -34,13 +32,11 @@ public class DesktopInterfaceListener implements ActionListener, ListSelectionLi
 		{
 			String input = welcome.getjUserInput().trim(); 
 			this.init();
+
 			if(welcome.getjRequestType().getSelectedIndex() == 0) {
-				return;
-			}
-			if(welcome.getjRequestType().getSelectedIndex() == 1) {
 				this.movies.add(this.mediator.searchMovieByTitle(input)); 
 			}
-			if(welcome.getjRequestType().getSelectedIndex() == 2) {
+			if(welcome.getjRequestType().getSelectedIndex() == 1) {
 				this.movies = this.mediator.searchMoviesByActor(input); 
 			}
 		
@@ -110,6 +106,10 @@ public class DesktopInterfaceListener implements ActionListener, ListSelectionLi
 		
 	    if (e.getSource() == welcome.getjMoviesTable().getSelectionModel() && welcome.getjMoviesTable().getRowSelectionAllowed()) {
 			int selected = welcome.getjMoviesTable().getSelectedRow(); 
+			if(selected < 0 )
+			{
+				return;
+			}
 			tableDeleteAllRows(welcome.getjActorsTable());
 			tableDeleteAllRows(welcome.getjProducersTable());
 			Movie m = this.movies.get(selected); 

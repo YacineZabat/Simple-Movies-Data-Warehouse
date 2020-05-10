@@ -15,8 +15,8 @@ public class RelationalDataBase {
 			title = inputSanitize(title);
 			Movie movie = new Movie();
 			String query1 =String.format("select *"
-								+ " from movies where lower(movies.Movie) like '%%%s%%' ",title);
-			String query2 =String.format("select * from  moviesbudget  where moviesbudget.Movie = '%s' ",title);
+								+ " from movies where lower(movies.Movie) like lower('%%%s%%') ",title);
+			String query2 =String.format("select * from  moviesbudget  where moviesbudget.Movie like lower('%%%s%%') ",title);
 
 			ResultSet rs;
 			Statement stmt = this.dbConnection.createStatement();
